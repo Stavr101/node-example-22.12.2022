@@ -1,8 +1,8 @@
-const { connect } = require("mongoose");
-
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", true);
 const connectDB = async () => {
   try {
-    const db = await connect(process.env.MONGO_DB);
+    const db = await mongoose.connect(process.env.MONGO_DB);
     console.log(
       `MongooDB is connected db.name: ${db.connection.name} on host:${db.connection.host}, on port:${db.connection.port} `
         .cyan.bold.italic
